@@ -502,16 +502,139 @@
 <hr>
 <strong>#10: Ciclo de vida dos componentes</strong>
 
-#11: Eventos em componentes
+    inicio, meio durante, fim (destruido)
+
+        componentWillMount(){} deprecated
+
+        componentDidMount(){
+            setInterval(() => {
+                this.setState({
+                    hora:new Date().toLocaleTimeString()
+                });
+            }, 1000);
+        }
+
+        componentDidUpdate(){
+            console.log('#10: Ciclo de vida dos componentes');
+            console.log('o Componente foi atualizado');
+        }
+
+        componentWillUnmount(){}
+
+        shouldComponentUpdate(){}
+
+    <div id="react10"></div>
+
+    <script type="text/babel">
+        class Relogio10 extends React.Component{
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    hora:'00:00:00'
+                };
+
+            }
+
+            componentDidMount(){
+                setInterval(() => {
+                    this.setState({
+                        hora:new Date().toLocaleTimeString()
+                    });
+                }, 1000);
+            }
+
+            componentDidUpdate(){
+                console.log('#10: Ciclo de vida dos componentes');
+                console.log('o Componente foi atualizado');
+            }
+
+            componentWillUnmount(){}
+
+            // shouldComponentUpdate(){}
+
+            render(){
+                return(
+                    <div>
+                        Horário: <br />
+                        // { new Date().toLocaleTimeString() }
+                        <br />
+                        { this.state.hora }
+                    </div>
+                );
+            }
+        }
+        let elemento10 = (
+            <div>
+                <Relogio10 />
+            </div>
+        );
+            
+        let react10 = cerd('#react10');
+        react10.render(elemento10);
+    </script>
+
+    ---x---
+
+<hr>
+<strong>#11: Eventos em componentes</strong>
+
+    <div id="react11"></div>
+
+    <script type="text/babel">
+        class Pessoa extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    nome: this.props.nome
+                };
+                
+                this.limparNome = this.limparNome.bind(this);
+                this.setNome = this.setNome.bind(this);
+            }
+
+            limparNome(){
+                this.setState({
+                    nome:''
+                });
+            }
+
+            setNome(nome){
+                this.setState({nome:nome});
+            }
+
+            render(){
+                return(
+                    <div>
+                        <em>
+                            Olá, meu nome é {this.state.nome} <br />
+                            <button onClick={this.limparNome}>Limpar nome</button>
+                            <button onClick={()=>{this.setNome('Johnny')}}>Adicionar nome</button>
+                        </em>
+                    </div>
+                );
+            }
+        }
+
+        let elemento11 = (
+            <div>
+                <Pessoa nome="Samuel" />
+            </div>
+        );
+            
+        let react11 = cerd('#react11');
+        react11.render(elemento11);
+    </script>
+
+#12: Renderização Condicional
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item9');
+        scrollGo('#item11');
     });
 </script>
 
-#12: Renderização Condicional
 #13: Condicional Inline
 #14: Listas
 #15: Controlando Formulários (Valores)
