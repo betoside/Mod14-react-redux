@@ -296,16 +296,84 @@
     &lt;/script>
 
 
+<hr>
+<strong>#8: Introdução a Componentes e Props (2/2)</strong>
+
+    <div id="react08"></div>
+
+    <script type="text/babel">
+
+        // function Bemvindo08(props){
+        //     return (
+        //         <div>
+        //             <span>esporte skate: {props.nome1} </span>
+        //             <br />
+        //             <span>esporte surf: {props.nome2} </span>
+        //         </div>
+        //     );
+        // }
+
+        class Post08 extends React.Component{
+
+            render() {
+                return (
+                    <div>
+                        <PostTopo autor={this.props.nome} />
+                        <PostCorpo />
+                        <PostRodape likes={this.props.likes} comentarios={this.props.comentarios} />
+                    </div>
+                );
+            }
+
+        }
+
+        class PostTopo extends React.Component {
+            render (){
+                return <div>{ this.props.autor }</div>;
+            }
+        }
+
+        class PostCorpo extends React.Component {
+            render (){
+                return <div>...</div>;
+            }
+        }
+
+        class PostRodape extends React.Component {
+            render (){
+                return (
+                    <div>
+                        <p>LIKES: {this.props.likes}, COMENTARIOS: {this.props.comentarios} </p>
+                    </div>
+                );
+            }
+        }
+
+        let elemento08 = (
+            <div>
+                <Post08 nome="Ka" likes="100" comentarios="15" />
+                <hr />
+                <Post08 nome="Jap" likes="200" comentarios="30" />
+                <hr />
+                <Post08 nome="Chok" likes="300" comentarios="45" />
+            </div>
+        );
+            
+        let react08 = cerd('#react08');
+        react08.render(elemento08);
+        
+    </script>
+
+
+#9: State nos componentes
+
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item7');
+        scrollGo('#item8');
     });
 </script>
-
-#8: Introdução a Componentes e Props (2/2)
-#9: State nos componentes
 #10: Ciclo de vida dos componentes
 #11: Eventos em componentes
 #12: Renderização Condicional
