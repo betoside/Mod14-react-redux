@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Módulo 14: React.js e Redux</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        .codigo{
+            width: 100%;
+            padding: 10px;
+        }
+        div[id^="reac"] {
+            background: #eef;
+            padding: 2px;
+
+        }
+    </style>
+
+    <script>
+        function scrollGo(elemId){
+
+            const strongs = document.querySelectorAll('strong');
+        
+            strongs.forEach((current, id) => {
+                current.setAttribute('id', 'item' + (id + 1));
+            });
+            
+            let el = document.querySelector(elemId);
+            let topo = el.offsetTop;
+            window.scrollTo({
+                top: topo, 
+                behavior:'smooth'
+            });
+        }
+    </script>
+</head>
+<body>
+
+<h3>Módulo 14: React.js e Redux</h3>
+<p>
+    <a href="https://alunos.b7web.com.br/curso/fezp/introducao-e-instalacao" target="_blank">https://alunos.b7web.com.br/curso/fezp/introducao-e-instalacao</a>
+</p>
+
+<pre>
+<strong>#1: Introdução e instalação</strong>
+
+    <a href="https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute" target="_blank">https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute</a>
+
+&lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin>&lt;/script>
+&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin>&lt;/script>
+    <!--
+        < por &lt;
+        > por &gt;
+    -->
+<hr>
+<strong>#2: Olá Mundo em React</strong>
+
+    <div id="react02"></div>
+    <div id="react021"></div>
+
+    <script>
+        qs = (el) => document.querySelector(el);
+        qsa = (g) => document.querySelectorAll(g);
+
+        function cerd(el){ // create element reactDOM
+            return ReactDOM.createRoot( qs(el) );
+        }
+        
+        const react02 = cerd('#react02');
+        react02.render('Olá Mundo!');
+
+        const react021 = cerd('#react021');
+        react021.render('Olá Outro Mundo!');
+
+    </script>
+
+    &lt;div id="react02">&lt;/div>
+    &lt;div id="react02-1">&lt;/div>
+
+    &lt;script>
+        qs = (el) => document.querySelector(el);
+        qsa = (g) => document.querySelectorAll(g);
+
+        function cerd(el){ // create element reactDOM
+            return ReactDOM.createRoot( qs(el) );
+        }
+        
+        const react02 = cerd('#react02');
+        react02.render('Olá Mundo!');
+
+        const react021 = cerd('#react021');
+        react021.render('Olá Outro Mundo!');
+    &lt;/script>
+
+
+<hr>
+<strong>#3: Introdução ao JSX</strong>
+
+    JSX: vai transpilar um html
+
+    Babel: &lt;script type="text/babel">
+    <a href="https://babeljs.io/docs/en/babel-standalone" target="_blank">https://babeljs.io/docs/en/babel-standalone</a>
+    &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js">&lt;/script>
+
+    <div id="react031"></div>
+    <div id="react032"></div>
+
+    <script type="text/babel">
+        let nome03 = "Gutaco Jac";
+        let sobrenome03 = "kaiane";
+        let idade03 = 90;
+        let str03 = <p>Olá, {nome03}, {idade03 + 1} anos.</p>;
+        
+        const react031 = cerd('#react031');
+        react031.render(str03);
+
+        let elemento03 = <p> {nome03} + ' e ' + {sobrenome03}</p>;
+        const react032 = cerd('#react032');
+        react032.render(elemento03);
+    </script>
+
+    &lt;div id="react031">&lt;/div>
+    &lt;div id="react032">&lt;/div>
+
+    &lt;script type="text/babel">
+        let nome03 = "Gutaco Jac";
+        let sobrenome03 = "kaiane";
+        let idade03 = 90;
+        let str03 = &lt;p>Olá, {nome03}, {idade03 + 1} anos.&lt;/p>;
+        
+        const react031 = cerd('#react031');
+        react031.render(str03);
+
+        let elemento03 = &lt;p> {nome03} + ' e ' + {sobrenome03}&lt;/p>;
+        const react032 = cerd('#react032');
+        react032.render(elemento03);
+    &lt;/script>
+
+
+    
+
+<hr>
+<strong>#4: Instalando Babel no SublimeText</strong>
+
+
+<hr>
+<strong>#5: JSX e React.createElement</strong>
+
+    <div id="react05"></div>
+
+    <script type="text/babel">
+        // let elemento05 = <p className="titulo">Olá mundo 5.0</p>;
+        let elemento05 = React.createElement(
+            'p',
+            { className: 'titulo' },
+            'Olá mundo 5.0'
+        );
+        
+        const react05 = cerd('#react05');
+        react05.render(elemento05);
+    </script>
+
+
+    &lt;div id="react05">&lt;/div>
+
+    &lt;script type="text/babel">
+        // let elemento05 = &lt;p className="titulo">Olá mundo 5.0&lt;/p>;
+        let elemento05 = React.createElement(
+            'p',
+            { className: 'titulo' },
+            'Olá mundo 5.0'
+        );
+        
+        const react05 = cerd('#react05');
+        react05.render(elemento05);
+    &lt;/script>
+
+<hr>
+<strong>#6: Como funciona a renderização</strong>
+
+    <div id="react06"></div>
+    <button id="btn06">stop</button> <button id="btn06start">start</button>
+
+    <script type="text/babel">
+        function mostrarHora06(){
+            let elemento = <p className="tit"> {new Date().toLocaleTimeString()} </p>;
+            
+            let react06 = cerd('#react06');
+            react06.render(elemento);
+        }
+        
+        let react06_interval = setInterval(mostrarHora06, 1000);
+        let btn06 = qs('#btn06');
+        btn06.addEventListener('click', () => {
+            clearInterval(react06_interval);
+            
+        });
+        let btn06start = qs('#btn06start');
+        btn06start.addEventListener('click', () => {
+            react06_interval = setInterval(mostrarHora06, 1000);
+        });
+    </script>
+
+
+
+    &lt;div id="react06">&lt;/div>
+    &lt;button id="btn06">stop&lt;/button> &lt;button id="btn06start">start&lt;/button>
+
+    &lt;script type="text/babel">
+        function mostrarHora06(){
+            let elemento = &lt;p className="tit"> {new Date().toLocaleTimeString()} &lt;/p>;
+            
+            let react06 = cerd('#react06');
+            react06.render(elemento);
+        }
+        
+        let react06_interval = setInterval(mostrarHora06, 1000);
+        let btn06 = qs('#btn06');
+        btn06.addEventListener('click', () => {
+            clearInterval(react06_interval);
+            
+        });
+        let btn06start = qs('#btn06start');
+        btn06start.addEventListener('click', () => {
+            react06_interval = setInterval(mostrarHora06, 1000);
+        });
+    &lt;/script>
+
+
+<script>
+    // &lt;
+    window.addEventListener('load', () => {
+        scrollGo('#item6');
+    });
+</script>
+#7: Introdução a Componentes e Props (1/2)
+#8: Introdução a Componentes e Props (2/2)
+#9: State nos componentes
+#10: Ciclo de vida dos componentes
+#11: Eventos em componentes
+#12: Renderização Condicional
+#13: Condicional Inline
+#14: Listas
+#15: Controlando Formulários (Valores)
+#16: Controlando Formulários (Eventos)
+#17: Controlando Formulários (Múltiplos Inputs)
+#18: Ações fora do Componente
+#19: Comunicação entre Componentes
+#20: Exercício: Conversor de Moedas (Via-dupla)
+#21: Exercício: Sinal de trânsito
+#22: Exercício: To-do com busca
+#23: Exercício: Feed do instagram
+#24: Exercício: Tabela com edição via modal
+#25: Interpretado In-Browser vs Pré-compilado
+#26: Projeto Pré-compilado (1/2)
+#27: Projeto Pré-compilado (2/2)
+#28: Estrutura de um projeto (1/2)
+#29: Estrutura de um projeto (2/2)
+#30: Instalando Servidor Local
+#31: React Router (parte 1)
+#32: React Router (parte 2)
+#33: React Router (parte 3)
+#34: Criando o Config
+#35: Bundle Básico
+#36: Requisição simples
+#37: Requisição com Lista
+#38: Requisição Post com dados
+#39: Projeto: Exibindo os filmes em cartaz
+#40: Exercício: Criando um carrinho de compras
+#41: Exercício: Cadastro de usuários
+#42: Projeto: Sistema de Login (1/4)
+#43: Projeto: Sistema de Login (2/4)
+#44: Projeto: Sistema de Login (3/4)
+#45: Projeto: Sistema de Login (4/4)
+#46: O que é Redux e pra que serve?
+#47: Store, Reducer, Action e Dispatcher
+#48: Instalando o Redux
+#49: Configurando Reducers
+#50: Criando a Store
+#51: Configurando a Tela
+#52: Criando as Actions
+#53: Exercício: Login e Senha
+#54: Exercício: Lista de Tarefas
+#55: Hooks: Introdução ao React Hooks
+#56: Hooks: Configurando o Projeto
+#57: Hooks: useState (1/2)
+#58: Hooks: Refatorando Componente
+#59: Hooks: useState (2/2)
+#60: Hooks: useEffect
+#61: Hooks: Criando Hooks Personalizados
+#62: Hooks: useRef
+#63: Hooks: useReducer (1/2)
+#64: Hooks: useReducer (2/2)
+#65: Hooks: useMemo
+#66: Hooks: useEffect com Fetch
+#67: Hooks: useLayoutEffect
+#68: Hooks: Finalizando Modal
+#69: Hooks: Dicas importantes
+</pre>
+</body>
+</html>
