@@ -303,16 +303,6 @@
 
     <script type="text/babel">
 
-        // function Bemvindo08(props){
-        //     return (
-        //         <div>
-        //             <span>esporte skate: {props.nome1} </span>
-        //             <br />
-        //             <span>esporte surf: {props.nome2} </span>
-        //         </div>
-        //     );
-        // }
-
         class Post08 extends React.Component{
 
             render() {
@@ -364,18 +354,163 @@
         
     </script>
 
+    ---x---
 
-#9: State nos componentes
+    &lt;div id="react08">&lt;/div>
 
+    &lt;script type="text/babel">
+
+        class Post08 extends React.Component{
+
+            render() {
+                return (
+                    &lt;div>
+                        &lt;PostTopo autor={this.props.nome} />
+                        &lt;PostCorpo />
+                        &lt;PostRodape likes={this.props.likes} comentarios={this.props.comentarios} />
+                    &lt;/div>
+                );
+            }
+
+        }
+
+        class PostTopo extends React.Component {
+            render (){
+                return &lt;div>{ this.props.autor }&lt;/div>;
+            }
+        }
+
+        class PostCorpo extends React.Component {
+            render (){
+                return &lt;div>...&lt;/div>;
+            }
+        }
+
+        class PostRodape extends React.Component {
+            render (){
+                return (
+                    &lt;div>
+                        &lt;p>LIKES: {this.props.likes}, COMENTARIOS: {this.props.comentarios} &lt;/p>
+                    &lt;/div>
+                );
+            }
+        }
+
+        let elemento08 = (
+            &lt;div>
+                &lt;Post08 nome="Ka" likes="100" comentarios="15" />
+                &lt;hr />
+                &lt;Post08 nome="Jap" likes="200" comentarios="30" />
+                &lt;hr />
+                &lt;Post08 nome="Chok" likes="300" comentarios="45" />
+            &lt;/div>
+        );
+            
+        let react08 = cerd('#react08');
+        react08.render(elemento08);
+        
+    &lt;/script>
+
+
+<hr>
+<strong>#9: State nos componentes</strong>
+
+    this.setState({});
+
+    <div id="react09"></div>
+
+    <script type="text/babel">
+        class Relogio extends React.Component{
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    hora:'00:00:00'
+                };
+
+                setInterval(() => {
+                    this.setState({
+                        hora:new Date().toLocaleTimeString()
+                    });
+                }, 1000);
+
+            }
+
+            render(){
+                return(
+                    <div>
+                        Horário: <br />
+                        // { new Date().toLocaleTimeString() }
+                        <br />
+                        { this.state.hora }
+                    </div>
+                );
+            }
+        }
+        let elemento09 = (
+            <div>
+                <Relogio />
+            </div>
+        );
+            
+        let react09 = cerd('#react09');
+        react09.render(elemento09);
+    </script>
+
+    ---x---
+
+    &lt;div id="react09">&lt;/div>
+
+    &lt;script type="text/babel">
+        class Relogio extends React.Component{
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    hora:'00:00:00'
+                };
+
+                setInterval(() => {
+                    this.setState({
+                        hora:new Date().toLocaleTimeString()
+                    });
+                }, 1000);
+
+            }
+
+            render(){
+                return(
+                    &lt;div>
+                        Horário: &lt;br />
+                        // { new Date().toLocaleTimeString() }
+                        &lt;br />
+                        { this.state.hora }
+                    &lt;/div>
+                );
+            }
+        }
+        let elemento09 = (
+            &lt;div>
+                &lt;Relogio />
+            &lt;/div>
+        );
+            
+        let react09 = cerd('#react09');
+        react09.render(elemento09);
+    &lt;/script>
+
+<hr>
+<strong>#10: Ciclo de vida dos componentes</strong>
+
+#11: Eventos em componentes
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item8');
+        scrollGo('#item9');
     });
 </script>
-#10: Ciclo de vida dos componentes
-#11: Eventos em componentes
+
 #12: Renderização Condicional
 #13: Condicional Inline
 #14: Listas
