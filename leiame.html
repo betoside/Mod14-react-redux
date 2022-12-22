@@ -194,7 +194,7 @@
             react06.render(elemento);
         }
         
-        let react06_interval = setInterval(mostrarHora06, 1000);
+        // let react06_interval = setInterval(mostrarHora06, 1000);
         let btn06 = qs('#btn06');
         btn06.addEventListener('click', () => {
             clearInterval(react06_interval);
@@ -232,13 +232,78 @@
     &lt;/script>
 
 
+<hr>
+<strong>#7: Introdução a Componentes e Props (1/2)</strong>
+
+    Componentes: são itens independentes, separados.
+    Exemplo: uma rede social, tem o feed com várias postagens,
+    sendo cada postagem um componente, é idenpendente uma da outra,
+    e ela funciona ou tem a máquina funcionando com ela.
+
+
+    <div id="react07"></div>
+
+    <script type="text/babel">
+
+        function Bemvindo07(props){
+            return (
+                <div>
+                    <span>esporte skate: {props.nome1} </span>
+                    <br />
+                    <span>esporte surf: {props.nome2} </span>
+                </div>
+            );
+        }
+
+        let elemento07 = (
+            <div>
+                <Bemvindo07 nome1="Ka" nome2="Gu" />
+                <hr />
+                <Bemvindo07 nome1="Nat" nome2="Bruno" />
+            </div>
+        );
+            
+        let react07 = cerd('#react07');
+        react07.render(elemento07);
+        
+    </script>
+
+    &lt;div id="react07">&lt;/div>
+
+    &lt;script type="text/babel">
+
+        function Bemvindo07(props){
+            return (
+                &lt;div>
+                    &lt;span>esporte skate: {props.nome1} &lt;/span>
+                    &lt;br />
+                    &lt;span>esporte surf: {props.nome2} &lt;/span>
+                &lt;/div>
+            );
+        }
+
+        let elemento07 = (
+            &lt;div>
+                &lt;Bemvindo07 nome1="Ka" nome2="Gu" />
+                &lt;hr />
+                &lt;Bemvindo07 nome1="Nat" nome2="Bruno" />
+            &lt;/div>
+        );
+            
+        let react07 = cerd('#react07');
+        react07.render(elemento07);
+        
+    &lt;/script>
+
+
+
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item6');
+        scrollGo('#item7');
     });
 </script>
-#7: Introdução a Componentes e Props (1/2)
+
 #8: Introdução a Componentes e Props (2/2)
 #9: State nos componentes
 #10: Ciclo de vida dos componentes
