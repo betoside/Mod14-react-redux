@@ -1216,7 +1216,7 @@
         react17.render(element17);
 
     </script>
-    
+
     -x- 
 
     &lt;div id="react17">&lt;/div>
@@ -1275,18 +1275,68 @@
 
 
 
-#18: Ações fora do Componente
+<hr>
+<strong>#18: Ações fora do Componente</strong>
+
+    <div id="react18"></div>
+
+    <script type="text/babel">
+        class Botao18 extends React.Component{
+            render(){
+                return(
+                    <button onClick={()=>{
+                        if( this.props.status == 1 ){
+                            this.props.funcaoTrocar(0);
+                        } else {
+                            this.props.funcaoTrocar(1);
+                        }
+                    }}>{this.props.status == 1 ? 'DESABILITAR' : 'HABILITAR'}</button>
+                );
+            }
+        }
+
+        class App18 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    status:1
+                };
+
+                this.trocarStatus = this.trocarStatus.bind(this);
+            }
+
+            trocarStatus(novoStatus){
+                this.setState({status:novoStatus});
+            }
+
+            render(){
+                return(
+                    <div>
+                        <p>{this.state.status == 1 ? 'HABILITADO' : 'DESABILITADO'}</p>
+
+                        <Botao18 status={this.state.status} funcaoTrocar={this.trocarStatus} />
+                    </div>
+                );
+            }
+        }
+
+        let react18 = cerd('#react18');
+        react18.render(<App18 />);
+    </script>
+
+
+<hr>
+<strong>#19: Comunicação entre Componentes</strong>
 
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item17');
+        scrollGo('#item19');
     });
 </script>
 
 
-#19: Comunicação entre Componentes
 #20: Exercício: Conversor de Moedas (Via-dupla)
 #21: Exercício: Sinal de trânsito
 #22: Exercício: To-do com busca
