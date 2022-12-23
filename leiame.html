@@ -1009,6 +1009,79 @@
 <hr>
 <strong>#15: Controlando Formulários (Valores)</strong>
 
+    <div id="react15"></div>
+    
+    <script type="text/babel">
+
+        class Login15 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    email:'rock@hotmail.com',
+                    texto:'Algum texto qualquer, etc, etc, ...',
+                    sexo:'masculino'
+
+                }
+
+                this.emailTrocou = this.emailTrocou.bind(this);
+                this.sexoMudou = this.sexoMudou.bind(this);
+                this.textoMudou = this.textoMudou.bind(this);
+            }
+
+            emailTrocou(e){
+                let novoValor = e.target.value;
+                this.setState({
+                    email:novoValor
+                });
+
+            }
+
+            sexoMudou(e){
+                let novoValor = e.target.value;
+                this.setState({
+                    sexo:novoValor
+                });
+
+            }
+
+            textoMudou(e){
+                let novoValor = e.target.value;
+                this.setState({
+                    texto:novoValor
+                });
+
+            }
+
+            
+
+            render(){
+                return (
+                    <form>
+                        <input type="email" name="email" value={this.state.email} onChange={this.emailTrocou} /> [{this.state.email}] <br />
+                        <input type="password" name="senha" /> [{this.state.senha}] <br />
+                        <textarea rows="4" cols="30" value={this.state.texto} onChange={this.textoMudou}></textarea> [{this.state.texto}] <br />
+                        <select name="sexo" value={this.state.sexo} onChange={this.sexoMudou}>
+                            <option value=""></option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select> [{this.state.sexo}] <br />
+                        <input type="submit" value="Entrar" />
+                    </form>
+                );
+            }
+        }
+
+        let element15 = (
+            <div>
+                <Login15 />
+            </div>
+        );
+
+        let react15 = cerd('#react15');
+        react15.render(element15);
+
+    </script>
+
 
 
 
@@ -1020,7 +1093,7 @@
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item14');
+        scrollGo('#item15');
     });
 </script>
 
