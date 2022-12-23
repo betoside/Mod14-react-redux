@@ -890,17 +890,140 @@
 
 
 
-#14: Listas
+<hr>
+<strong>#14: Listas</strong>
+
+    Como gerar lista de componentes, textos, html geral
+
+    <div id="react14"></div>
+
+    <script type="text/babel">
+        class Post extends React.Component{
+            render(){
+                return(
+                    <div>
+                        <p><b> {this.props.titulo} </b></p>
+                        <p> {this.props.corpo} </p>
+                        <hr />
+                    </div>
+                );
+            };
+        }
+
+        class Noticias14 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    posts:[
+                        {id:1, titulo:'titulo 1', corpo:'corpo 1'},
+                        {id:2, titulo:'titulo 2', corpo:'corpo 2'},
+                        {id:3, titulo:'titulo 3', corpo:'corpo 3'},
+                        {id:4, titulo:'titulo 4', corpo:'corpo 4'},
+                        {id:5, titulo:'titulo 5', corpo:'corpo 5'}
+                    ]
+                }
+            }
+
+            render(){
+                let lista = this.state.posts.map((item, index)=>{
+                                return(
+                                    <Post key={item.id} titulo={item.titulo} corpo={item.corpo} />
+                                );
+                            })
+                return(
+                    <div>
+                        {lista}
+                    </div>
+                );
+            }
+        }
+
+        let element14 = (
+            <div>
+                <Noticias14 />
+            </div>
+        );
+
+        let react14 = cerd('#react14');
+        react14.render(element14);
+
+    </script>
+
+    --x--
+
+    &lt;div id="react14">&lt;/div>
+
+    &lt;script type="text/babel">
+        class Post extends React.Component{
+            render(){
+                return(
+                    &lt;div>
+                        &lt;p>&lt;b> {this.props.titulo} &lt;/b>&lt;/p>
+                        &lt;p> {this.props.corpo} &lt;/p>
+                        &lt;hr />
+                    &lt;/div>
+                );
+            };
+        }
+
+        class Noticias14 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    posts:[
+                        {id:1, titulo:'titulo 1', corpo:'corpo 1'},
+                        {id:2, titulo:'titulo 2', corpo:'corpo 2'},
+                        {id:3, titulo:'titulo 3', corpo:'corpo 3'},
+                        {id:4, titulo:'titulo 4', corpo:'corpo 4'},
+                        {id:5, titulo:'titulo 5', corpo:'corpo 5'}
+                    ]
+                }
+            }
+
+            render(){
+                let lista = this.state.posts.map((item, index)=>{
+                                return(
+                                    &lt;Post key={item.id} titulo={item.titulo} corpo={item.corpo} />
+                                );
+                            })
+                return(
+                    &lt;div>
+                        {lista}
+                    &lt;/div>
+                );
+            }
+        }
+
+        let element14 = (
+            &lt;div>
+                &lt;Noticias14 />
+            &lt;/div>
+        );
+
+        let react14 = cerd('#react14');
+        react14.render(element14);
+
+    &lt;/script>
+
+
+<hr>
+<strong>#15: Controlando Formulários (Valores)</strong>
+
+
+
+
+
+
+
+#16: Controlando Formulários (Eventos)
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item13');
+        scrollGo('#item14');
     });
 </script>
 
-#15: Controlando Formulários (Valores)
-#16: Controlando Formulários (Eventos)
 #17: Controlando Formulários (Múltiplos Inputs)
 #18: Ações fora do Componente
 #19: Comunicação entre Componentes
