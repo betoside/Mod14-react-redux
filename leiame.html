@@ -537,7 +537,7 @@
             }
 
             componentDidMount(){
-                setInterval(() => {
+                setTimeout(() => {
                     this.setState({
                         hora:new Date().toLocaleTimeString()
                     });
@@ -549,7 +549,9 @@
                 console.log('o Componente foi atualizado');
             }
 
-            componentWillUnmount(){}
+            componentWillUnmount(){
+                
+            }
 
             // shouldComponentUpdate(){}
 
@@ -578,6 +580,9 @@
 
 <hr>
 <strong>#11: Eventos em componentes</strong>
+
+    this.limparNome = this.limparNome.bind(this);
+    this.setNome = this.setNome.bind(this);
 
     <div id="react11"></div>
 
@@ -626,17 +631,274 @@
         react11.render(elemento11);
     </script>
 
-#12: Renderização Condicional
+    --x--
+
+    &lt;div id="react11">&lt;/div>
+
+    &lt;script type="text/babel">
+        class Pessoa extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    nome: this.props.nome
+                };
+                
+                this.limparNome = this.limparNome.bind(this);
+                this.setNome = this.setNome.bind(this);
+            }
+
+            limparNome(){
+                this.setState({
+                    nome:''
+                });
+            }
+
+            setNome(nome){
+                this.setState({nome:nome});
+            }
+
+            render(){
+                return(
+                    &lt;div>
+                        &lt;em>
+                            Olá, meu nome é {this.state.nome} &lt;br />
+                            &lt;button onClick={this.limparNome}>Limpar nome&lt;/button>
+                            &lt;button onClick={()=>{this.setNome('Johnny')}}>Adicionar nome&lt;/button>
+                        &lt;/em>
+                    &lt;/div>
+                );
+            }
+        }
+
+        let elemento11 = (
+            &lt;div>
+                &lt;Pessoa nome="Samuel" />
+            &lt;/div>
+        );
+            
+        let react11 = cerd('#react11');
+        react11.render(elemento11);
+    &lt;/script>
+
+<hr>
+<strong>#12: Renderização Condicional</strong>
+
+    <div id="react12"></div>
+
+    <script type="text/babel">
+
+        class Login12 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    status:1
+                };
+
+                this.ativar = this.ativar.bind(this);
+                this.desativar = this.desativar.bind(this);
+            }
+
+            ativar(){
+                this.setState({
+                    status: 1
+                });
+            }
+
+            desativar(){
+                this.setState({
+                    status:0
+                });
+            }
+
+            render(){
+                let statusMsg;
+                let statusBtn;
+
+                if( this.state.status == 1 ){
+                    statusMsg = 'Ativado';
+                    statusBtn = <button onClick={this.desativar}>Desativar</button>;
+                }else{
+                    statusMsg = 'Desativado';                    
+                    statusBtn = <button onClick={this.ativar}>Ativar</button>;
+                }
+
+                return (
+                    <div>
+                        <p>Status: { statusMsg }</p>
+                        {statusBtn}
+                    </div>
+                );
+            }
+        }
+
+        let elemento12 = (
+            <div>
+                <Login12 />
+            </div>
+        );
+
+        let react12 = cerd('#react12');
+        react12.render(elemento12);
+
+    </script>
+
+    -x-
+
+    &lt;div id="react12">&lt;/div>
+
+    &lt;script type="text/babel">
+
+        class Login12 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    status:1
+                };
+
+                this.ativar = this.ativar.bind(this);
+                this.desativar = this.desativar.bind(this);
+            }
+
+            ativar(){
+                this.setState({
+                    status: 1
+                });
+            }
+
+            desativar(){
+                this.setState({
+                    status:0
+                });
+            }
+
+            render(){
+                let statusMsg;
+                let statusBtn;
+
+                if( this.state.status == 1 ){
+                    statusMsg = 'Ativado';
+                    statusBtn = &lt;button onClick={this.desativar}>Desativar&lt;/button>;
+                }else{
+                    statusMsg = 'Desativado';                    
+                    statusBtn = &lt;button onClick={this.ativar}>Ativar&lt;/button>;
+                }
+
+                return (
+                    &lt;div>
+                        &lt;p>Status: { statusMsg }&lt;/p>
+                        {statusBtn}
+                    &lt;/div>
+                );
+            }
+        }
+
+        let elemento12 = (
+            &lt;div>
+                &lt;Login12 />
+            &lt;/div>
+        );
+
+        let react12 = cerd('#react12');
+        react12.render(elemento12);
+
+    &lt;/script>
+
+<hr>
+<strong>#13: Condicional Inline</strong>
+
+    <div id="react13"></div>
+
+    <script type="text/babel">
+        class Aviso extends React.Component {
+
+            constructor(props){
+                super(props);
+                this.state = {
+                     msg:[1,2,3,4,5,6,7,'a']
+                }
+
+            }
+
+            render(){
+                return (
+                    <div>
+                        <p>
+                            { this.state.msg.length > 0 &&
+                                <span>Você possui {this.state.msg.length} mensagens não lidas</span>
+                            }
+                        </p>
+                        <p>
+                            User {this.state.msg.length > 0 ? '' : 'não'} tem mensagens
+                        </p>
+                    </div>
+                );
+            }
+
+        }
+
+        let elemento13 = ( // componente
+            <div>
+                <Aviso />
+            </div>
+        );
+
+        let react13 = cerd('#react13');
+        react13.render(elemento13);
+    </script>
+
+    --x--
+
+    &lt;div id="react13">&lt;/div>
+
+    &lt;script type="text/babel">
+        class Aviso extends React.Component {
+
+            constructor(props){
+                super(props);
+                this.state = {
+                     msg:[1,2,3,4,5,6,7,'a']
+                }
+
+            }
+
+            render(){
+                return (
+                    &lt;div>
+                        &lt;p>
+                            { this.state.msg.length > 0 &&
+                                &lt;span>Você possui {this.state.msg.length} mensagens não lidas&lt;/span>
+                            }
+                        &lt;/p>
+                        &lt;p>
+                            User {this.state.msg.length > 0 ? '' : 'não'} tem mensagens
+                        &lt;/p>
+                    &lt;/div>
+                );
+            }
+
+        }
+
+        let elemento13 = ( // componente
+            &lt;div>
+                &lt;Aviso />
+            &lt;/div>
+        );
+
+        let react13 = cerd('#react13');
+        react13.render(elemento13);
+    &lt;/script>
+
+
+
+#14: Listas
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item11');
+        scrollGo('#item13');
     });
 </script>
 
-#13: Condicional Inline
-#14: Listas
 #15: Controlando Formulários (Valores)
 #16: Controlando Formulários (Eventos)
 #17: Controlando Formulários (Múltiplos Inputs)
