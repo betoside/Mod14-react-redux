@@ -1052,8 +1052,6 @@
 
             }
 
-            
-
             render(){
                 return (
                     <form>
@@ -1082,23 +1080,212 @@
 
     </script>
 
+    -x- 
+
+    &lt;div id="react15">&lt;/div>
+    
+    &lt;script type="text/babel">
+
+        class Login15 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    email:'rock@hotmail.com',
+                    texto:'Algum texto qualquer, etc, etc, ...',
+                    sexo:'masculino'
+
+                }
+
+                this.emailTrocou = this.emailTrocou.bind(this);
+                this.sexoMudou = this.sexoMudou.bind(this);
+                this.textoMudou = this.textoMudou.bind(this);
+            }
+
+            emailTrocou(e){
+                let novoValor = e.target.value;
+                this.setState({
+                    email:novoValor
+                });
+
+            }
+
+            sexoMudou(e){
+                let novoValor = e.target.value;
+                this.setState({
+                    sexo:novoValor
+                });
+
+            }
+
+            textoMudou(e){
+                let novoValor = e.target.value;
+                this.setState({
+                    texto:novoValor
+                });
+
+            }
+
+            render(){
+                return (
+                    &lt;form>
+                        &lt;input type="email" name="email" value={this.state.email} onChange={this.emailTrocou} /> [{this.state.email}] &lt;br />
+                        &lt;input type="password" name="senha" /> [{this.state.senha}] &lt;br />
+                        &lt;textarea rows="4" cols="30" value={this.state.texto} onChange={this.textoMudou}>&lt;/textarea> [{this.state.texto}] &lt;br />
+                        &lt;select name="sexo" value={this.state.sexo} onChange={this.sexoMudou}>
+                            &lt;option value="">&lt;/option>
+                            &lt;option value="masculino">Masculino&lt;/option>
+                            &lt;option value="feminino">Feminino&lt;/option>
+                        &lt;/select> [{this.state.sexo}] &lt;br />
+                        &lt;input type="submit" value="Entrar" />
+                    &lt;/form>
+                );
+            }
+        }
+
+        let element15 = (
+            &lt;div>
+                &lt;Login15 />
+            &lt;/div>
+        );
+
+        let react15 = cerd('#react15');
+        react15.render(element15);
+
+    &lt;/script>
+
+
+<hr>
+<strong>#16: Controlando Formulários (Eventos)</strong>
+
+    feito no item #15
+
+
+<hr>
+<strong>#17: Controlando Formulários (Múltiplos Inputs)</strong>
+
+    <div id="react17"></div>
+    
+    <script type="text/babel">
+
+        class Login17 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    formValues:{
+                        email:'rock@hotmail.com',
+                        texto:'Algum texto qualquer, etc, etc, ...',
+                        sexo:'masculino',
+                        senha:''
+                    }
+                }
+
+                this.inputTrocou = this.inputTrocou.bind(this);
+            }
+            
+            inputTrocou(e){
+                // 2 opcoes
+                let formValues = this.state.formValues;
+                formValues[e.target.name] = e.target.value;
+                this.setState({formValues});
+            }
+
+            render(){
+                return (
+                    <form>
+                        <input type="email" name="email" value={this.state.formValues.email} onChange={this.inputTrocou} /> [{this.state.formValues.email}] <br />
+                        <input type="password" name="senha" /> [{this.state.formValues.senha}] <br />
+                        <textarea name="texto" rows="4" cols="30" value={this.state.formValues.texto} onChange={this.inputTrocou}></textarea> [{this.state.formValues.texto}] <br />
+                        <select name="sexo" value={this.state.formValues.sexo} onChange={this.inputTrocou}>
+                            <option value=""></option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select> [{this.state.formValues.sexo}] <br />
+                        <input type="submit" value="Entrar" />
+                    </form>
+                );
+            }
+        }
+
+        let element17 = (
+            <div>
+                <Login17 />
+            </div>
+        );
+
+        let react17 = cerd('#react17');
+        react17.render(element17);
+
+    </script>
+    
+    -x- 
+
+    &lt;div id="react17">&lt;/div>
+    
+    &lt;script type="text/babel">
+
+        class Login17 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    formValues:{
+                        email:'rock@hotmail.com',
+                        texto:'Algum texto qualquer, etc, etc, ...',
+                        sexo:'masculino',
+                        senha:''
+                    }
+                }
+
+                this.inputTrocou = this.inputTrocou.bind(this);
+            }
+            
+            inputTrocou(e){
+                // 2 opcoes
+                let formValues = this.state.formValues;
+                formValues[e.target.name] = e.target.value;
+                this.setState({formValues});
+            }
+
+            render(){
+                return (
+                    &lt;form>
+                        &lt;input type="email" name="email" value={this.state.formValues.email} onChange={this.inputTrocou} /> [{this.state.formValues.email}] &lt;br />
+                        &lt;input type="password" name="senha" /> [{this.state.formValues.senha}] &lt;br />
+                        &lt;textarea name="texto" rows="4" cols="30" value={this.state.formValues.texto} onChange={this.inputTrocou}>&lt;/textarea> [{this.state.formValues.texto}] &lt;br />
+                        &lt;select name="sexo" value={this.state.formValues.sexo} onChange={this.inputTrocou}>
+                            &lt;option value="">&lt;/option>
+                            &lt;option value="masculino">Masculino&lt;/option>
+                            &lt;option value="feminino">Feminino&lt;/option>
+                        &lt;/select> [{this.state.formValues.sexo}] &lt;br />
+                        &lt;input type="submit" value="Entrar" />
+                    &lt;/form>
+                );
+            }
+        }
+
+        let element17 = (
+            &lt;div>
+                &lt;Login17 />
+            &lt;/div>
+        );
+
+        let react17 = cerd('#react17');
+        react17.render(element17);
+
+    &lt;/script>
 
 
 
+#18: Ações fora do Componente
 
-
-
-#16: Controlando Formulários (Eventos)
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item15');
+        scrollGo('#item17');
     });
 </script>
 
-#17: Controlando Formulários (Múltiplos Inputs)
-#18: Ações fora do Componente
+
 #19: Comunicação entre Componentes
 #20: Exercício: Conversor de Moedas (Via-dupla)
 #21: Exercício: Sinal de trânsito
