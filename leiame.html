@@ -1324,20 +1324,187 @@
         react18.render(<App18 />);
     </script>
 
+    --x--
+
+    &lt;div id="react18">&lt;/div>
+
+    &lt;script type="text/babel">
+        class Botao18 extends React.Component{
+            render(){
+                return(
+                    &lt;button onClick={()=>{
+                        if( this.props.status == 1 ){
+                            this.props.funcaoTrocar(0);
+                        } else {
+                            this.props.funcaoTrocar(1);
+                        }
+                    }}>{this.props.status == 1 ? 'DESABILITAR' : 'HABILITAR'}&lt;/button>
+                );
+            }
+        }
+
+        class App18 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    status:1
+                };
+
+                this.trocarStatus = this.trocarStatus.bind(this);
+            }
+
+            trocarStatus(novoStatus){
+                this.setState({status:novoStatus});
+            }
+
+            render(){
+                return(
+                    &lt;div>
+                        &lt;p>{this.state.status == 1 ? 'HABILITADO' : 'DESABILITADO'}&lt;/p>
+
+                        &lt;Botao18 status={this.state.status} funcaoTrocar={this.trocarStatus} />
+                    &lt;/div>
+                );
+            }
+        }
+
+        let react18 = cerd('#react18');
+        react18.render(&lt;App18 />);
+    &lt;/script>
+
 
 <hr>
 <strong>#19: Comunicação entre Componentes</strong>
+    
+    <div id="react19"></div>
 
+    <script type="text/babel">
+
+        class Temperatura extends React.Component {
+            
+            render(){
+
+                let temp = parseFloat(this.props.temp);
+
+                if(this.props.escala == 'f'){
+                    temp = (temp * 9 /5) + 32;
+                }
+
+                return(
+                    <div>
+                        Temperatura em {this.props.escala.toUpperCase()} -  
+                        {temp}
+                        {this.props.escala == 'c' ? 'ºC' : 'ºF' }
+                    </div>
+                );
+            }
+
+        }
+
+
+        class App19 extends React.Component {
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    temperatura:20
+                }
+
+                this.tChange = this.tChange.bind(this);
+            }
+
+            tChange(e){
+                this.setState({temperatura:e.target.value});
+            }
+
+            render(){
+                return(
+                    <div>
+                        <input type='number' value={this.state.temperatura} onChange={this.tChange} />
+                        <Temperatura temp={this.state.temperatura} escala="c" />
+                        <Temperatura temp={this.state.temperatura} escala="f" />
+                    </div>
+                );
+            }
+
+        }
+
+
+        let react19 = cerd('#react19');
+        react19.render(<App19 />);
+    </script>
+
+    --x--
+    
+    &lt;div id="react19">&lt;/div>
+
+    &lt;script type="text/babel">
+
+        class Temperatura extends React.Component {
+            
+            render(){
+
+                let temp = parseFloat(this.props.temp);
+
+                if(this.props.escala == 'f'){
+                    temp = (temp * 9 /5) + 32;
+                }
+
+                return(
+                    &lt;div>
+                        Temperatura em {this.props.escala.toUpperCase()} - 
+                        {temp}
+                        {this.props.escala == 'c' ? 'ºC' : 'ºF' }
+                    &lt;/div>
+                );
+            }
+
+        }
+
+
+        class App19 extends React.Component {
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    temperatura:20
+                }
+
+                this.tChange = this.tChange.bind(this);
+            }
+
+            tChange(e){
+                this.setState({temperatura:e.target.value});
+            }
+
+            render(){
+                return(
+                    &lt;div>
+                        &lt;input type='number' value={this.state.temperatura} onChange={this.tChange} />
+                        &lt;Temperatura temp={this.state.temperatura} escala="c" />
+                        &lt;Temperatura temp={this.state.temperatura} escala="f" />
+                    &lt;/div>
+                );
+            }
+
+        }
+
+
+        let react19 = cerd('#react19');
+        react19.render(&lt;App19 />);
+    &lt;/script>
+
+
+<hr>
+<strong>#20: Exercício: Conversor de Moedas (Via-dupla)</strong>
 
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item19');
+        scrollGo('#item20');
     });
 </script>
 
-
-#20: Exercício: Conversor de Moedas (Via-dupla)
 #21: Exercício: Sinal de trânsito
 #22: Exercício: To-do com busca
 #23: Exercício: Feed do instagram
