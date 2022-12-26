@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Config from './Config';
 
 import { Header } from './components/Header';
-import { Home } from './pages/Home';
+import { Home } from './pages/Home/Home';
+import { Sobre } from './pages/Sobre/Sobre';
 
 class App extends Component{
     render(){
         return(
-            <BrowserRouter>
-                <div>
+            <BrowserRouter basename={Config.BASE_URL}>
+                    
                     <Header />
                     {/* <Home /> */}
-                    <Route exact path="/b7-Frontend-Zero-Ao-Pro/Mod14-react-redux/aula26react2/public/" component={Home} />
-                </div>
+                    {/* <Sobre /> */}
+                    
+                    <Routes>
+                        <Route exact path='/' element={<Home />} />
+                        <Route path='/Sobre' element={<Sobre />} />
+                    </Routes>
+                    
             </BrowserRouter>
         );
     }
 }
-
 export default App;
