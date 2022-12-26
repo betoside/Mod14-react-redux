@@ -8,7 +8,7 @@ function html(){
 }
 
 function js(){
-    return src('src/assets/js/index.js')
+    return src('src/index.js')
         .pipe(named())
         .pipe(webpack({
             mode:'production',
@@ -28,11 +28,19 @@ function js(){
                                 ]
                             }
                         }
+                    },
+                    {
+                        test:/\.(css|scss)$/,
+                        use:[
+                            'style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ]
                     }
                 ]
             }
         }))
-        .pipe(dest('public/assets/js/'))
+        .pipe(dest('public/'))
 }
 
 exports.default = parallel(html, js)
