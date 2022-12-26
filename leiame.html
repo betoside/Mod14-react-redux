@@ -1498,14 +1498,87 @@
 <hr>
 <strong>#20: Exercício: Conversor de Moedas (Via-dupla)</strong>
 
+    <div id="react20"></div>
+    
+    <script type="text/babel">
+
+        class Moeda extends React.Component{
+
+            render(){
+                let moeda = this.props.moeda;
+                let cifra = '';
+                let valorBr = 0;
+                let valorUs = 0;
+
+                if(moeda == 'real'){
+                    cifra = 'R$';
+                } else {
+                    cifra = 'US$';
+                }
+
+                if(moeda == 'real'){
+                    valorBr = this.props.valor;
+                    valorUs = this.props.valor / 6;
+                } else {
+                    valorBr = this.props.valor * 6;
+                    valorUs = this.props.valor;
+                }
+
+                return(
+                    <div>
+                        {cifra} <input type="number" value={moeda == 'real' ? valorBr : valorUs } onChange={this.props.mudar} /> <br />
+                    </div>
+                );
+            }
+        }
+
+        class App20_conversor extends React.Component{
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    valor:20 // valor sempre em R$
+                }
+                this.vChange = this.vChange.bind(this);
+            }
+
+            vChange(novoValor){
+                this.setState({
+                    valor:novoValor.target.value
+                });
+            }
+
+            // <Moeda valor={this.state.valor} moeda="real" mudar={this.vChange} />
+            // <Moeda valor={this.state.valor} moeda="dollar" mudar={this.vChange} />
+
+            render(){
+                return(
+                    <div>
+                        <Moeda valor={this.state.valor} moeda="real" mudar={this.vChange} />
+                        <br />
+                        <Moeda valor={this.state.valor} moeda="dollar" mudar={this.vChange} />
+                    </div>
+                );
+            }
+        }
+
+        let react20 = cerd('#react20');
+        react20.render(<App20_conversor/>);
+
+    </script>
+
+
+
+<hr>
+<strong>#21: Exercício: Sinal de trânsito</strong>
+
 <script>
     // &lt;
     window.addEventListener('load', () => {
-        scrollGo('#item20');
+        scrollGo('#item21');
     });
 </script>
 
-#21: Exercício: Sinal de trânsito
 #22: Exercício: To-do com busca
 #23: Exercício: Feed do instagram
 #24: Exercício: Tabela com edição via modal
