@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /b7-Frontend-Zero-Ao-Pro/Mod14-react-redux/aula26react2/public/index.html [L]
