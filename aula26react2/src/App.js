@@ -12,8 +12,6 @@ class App extends Component{
             <BrowserRouter basename={Config.BASE_URL}>
                     
                     <Header />
-                    {/* <Home /> */}
-                    {/* <Sobre /> */}
                     
                     <Routes>
                         <Route exact path='/' element={<Home />} />
