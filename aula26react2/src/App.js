@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Config from './Config';
 
 import { Header } from './components/Header';
-import { Home } from './pages/Home/Home';
-import { Sobre } from './pages/Sobre/Sobre';
+import { Home } from './pages/Home';
+import { Sobre } from './pages/Sobre';
+import { Requisicaolista } from './pages/Requisicaolista';
 
 class App extends Component{
     render(){
@@ -16,6 +17,7 @@ class App extends Component{
                     <Routes>
                         <Route exact path='/' element={<Home />} />
                         <Route path='/Sobre' element={<Sobre />} />
+                        <Route path='/Requisicaolista' element={<Requisicaolista />} />
                     </Routes>
                     
             </BrowserRouter>
